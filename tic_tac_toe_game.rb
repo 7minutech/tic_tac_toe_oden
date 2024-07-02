@@ -1,6 +1,9 @@
 class TicTacToe
   def initialize
     @borad = []
+    @current_move = ""
+  end
+  def fill_board
   end
   def display_board
   end
