@@ -5,6 +5,7 @@ class TicTacToe
   def initialize
     @board = Array.new(5) { Array.new(5) }
     @current_move = ""
+    @rounds_played = 0
   end
 
   def fill_board
@@ -27,6 +28,9 @@ class TicTacToe
   end
 
   def get_player_move
+    print "Enter your move in row:column formate, like \"1:1\" for row 1 column 1"
+    print "\nMove: "
+    current_move = gets.chomp
   end
 
   def place_move(move)
@@ -41,3 +45,4 @@ end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
+game1.get_player_move
