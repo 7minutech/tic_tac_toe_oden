@@ -8,8 +8,8 @@ class TicTacToe
   end
 
   def fill_board
-    (0..4).each do |i|
-      (0..4).each do |j|
+    (0...board.length).each do |i|
+      (0...board.length).each do |j|
         board[i][j] = "|" if j.odd?
         board[i][j] = "-" if i.odd?
         board[i][j] = "x" if i.even? && j.even?
