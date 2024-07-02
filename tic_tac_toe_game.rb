@@ -3,7 +3,7 @@ class TicTacToe
   attr_accessor :board, :current_move
 
   def initialize
-    @borad = []
+    @borad = [][]
     @current_move = ""
   end
 
@@ -24,6 +24,4 @@ class TicTacToe
 
   def play_game
   end
-
 end
-
