@@ -3,11 +3,10 @@ class TicTacToe
   attr_accessor :board, :current_move
 
   def initialize
-    @board = [][]
+    @board = Array.new(5) { Array.new(9) }
     @current_move = ""
   end
-
-  def fill_board
+  def fill_board 
   end
 
   def display_board
