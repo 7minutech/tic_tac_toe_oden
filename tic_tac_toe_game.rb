@@ -12,7 +12,7 @@ class TicTacToe
       (0...board.length).each do |j|
         board[i][j] = "|" if j.odd?
         board[i][j] = "-" if i.odd?
-        board[i][j] = "x" if i.even? && j.even?
+        board[i][j] = " " if i.even? && j.even?
       end
     end
   end
