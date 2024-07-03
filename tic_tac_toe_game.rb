@@ -34,7 +34,11 @@ class TicTacToe
     print "\nMove: "
     self.current_move = gets.chomp
   end
-
+  def convert_move
+    move_arr = current_move.split(":")
+    move_arr.map!(&:to_i)
+    self.current_move = move_arr
+  end
   def valid_move?
     move_arr = current_move.split(":")
     move_arr.map!(&:to_i)
