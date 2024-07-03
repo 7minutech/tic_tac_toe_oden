@@ -1,10 +1,12 @@
 # class that sets up a game of tic tac toe
 class TicTacToe
-  attr_accessor :board, :current_move, :x_o, :simple_board
+  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win, :player_two_win
 
   POSSIBLE_MOVES = (1..3).freeze
   WINNING_COMBINAITONS = (0..7).freeze
   BOARD_SPACES = (0..4).freeze
+  PLAYER_ONE_WIN = "xxx"
+  PLAYER_TWO_WIN = "ooo"
 
   def initialize
     @board = Array.new(5) { Array.new(5) }
@@ -12,6 +14,8 @@ class TicTacToe
     @rounds_played = 0
     @x_o = "x"
     @simple_board = Array.new(3) {Array.new(3)}
+    @player_one_win = false
+    @player_two_win = false
   end
 
   def fill_board
@@ -79,13 +83,27 @@ class TicTacToe
         simple_board[i][j] = board[i * 2][j * 2]
       end
     end
-    print simple_board
   end
 
-  # 00 02 04
-  # 10 12 14
-  # 20 22 24 
+  # 00 01 02
+  # 10 11 12
+  # 20 21 23 
   def winner?
+    row_arr = []
+    col_arr = []
+    simple_board.each do |row|
+      row_arr = row
+      row.each do |col|
+        col_arr.push(col)
+      end
+      col_str = col_arr.reduce {|result,space| result + space}
+      row_str = row_arr.reduce {|result,space| result + space}
+      self.player_one_win = true if col_str == PLAYER_ONE_WIN || row_str == PLAYER_ONE_WIN
+      self.player_one_win = true if col_str == PLAYER_TWO_WIN || row_str == PLAYER_TWO_WIN
+      col_arr.clear
+    end
+    puts player_one_win
+    puts player_two_win
   end
 
   def play_game
@@ -95,3 +113,4 @@ game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.map_simple_board
+game1.winner?
