@@ -143,8 +143,9 @@ class TicTacToe
     end
   end
 
-  def reset 
+  def reset
     self.game_over = false
+    self.rounds_played = 0
   end
 
   def play_game
