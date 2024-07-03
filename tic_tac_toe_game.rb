@@ -63,12 +63,7 @@ class TicTacToe
   end
 
   def map_move
-    row = current_move[0]
-    col = current_move[1]
-    row = (row - 1) * 2
-    col = (col - 1) * 2
-    current_move[0] = row
-    current_move[1] = col
+    self.current_move = current_move.map { |n| (n - 1) * 2 }
   end
 
   def place_move
