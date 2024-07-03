@@ -99,6 +99,17 @@ class TicTacToe
     self.move_combinaitons = row_col_str
   end
 
+  def diaganol_moves
+    SIMPLE_BOARD_SPACES.each do |i|
+      self.move_combinaitons += simple_board[i][i]
+    end
+    counter = 2
+    SIMPLE_BOARD_SPACES.each do |i|
+      self.move_combinaitons += simple_board[i][i]
+      counter -= 1
+    end
+  end
+
   def play_game; end
 end
 game1 = TicTacToe.new
