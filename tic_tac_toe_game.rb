@@ -50,8 +50,17 @@ class TicTacToe
     self.current_move = current_move.split(":").map!(&:to_i)
   end
 
+  def move_placed?
+    if board[translate_move(current_move[0])][translate_move(current_move[1])] == " "
+      false
+    else
+      puts "#{current_move} has already been placed"
+      true
+    end
+  end
+
   def valid_move?
-    if current_move.all? { |num| POSSIBLE_MOVES.include?(num) }
+    if current_move.all? { |num| POSSIBLE_MOVES.include?(num) } && !move_placed?
       true
     else
       puts "Row and Column must be between [1,3]"
@@ -63,8 +72,13 @@ class TicTacToe
     self.x_o = rounds_played.even? ? "x" : "o"
   end
 
+  def translate_move(num)
+    # move 1:1 is really 0:0 on board
+    (num - 1) * 2
+  end
+
   def map_move
-    self.current_move = current_move.map { |n| (n - 1) * 2 }
+    self.current_move = current_move.map { |n| translate_move(n) }
   end
 
   def place_move
