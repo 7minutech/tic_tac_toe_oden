@@ -1,6 +1,6 @@
 # class that sets up a game of tic tac toe
 class TicTacToe
-  attr_accessor :board, :current_move
+  attr_accessor :board, :current_move, :x_o, :simple_board
 
   POSSIBLE_MOVES = (1..3).freeze
   WINNING_COMBINAITONS = (0..7).freeze
@@ -15,11 +15,11 @@ class TicTacToe
   end
 
   def fill_board
-    (BOARD_SPACES).each do |i|
-      (BOARD_SPACES).each do |j|
+    BOARD_SPACES.each do |i|
+      BOARD_SPACES.each do |j|
         board[i][j] = "|" if j.odd?
         board[i][j] = "-" if i.odd?
-        board[i][j] = " " if i.even? && j.even?
+        board[i][j] = "x" if i.even? && j.even?
       end
     end
   end
@@ -73,7 +73,15 @@ class TicTacToe
     board[current_move[0]][current_move[1]] = @x_o
   end
 
-  
+  def map_simple_board
+    (0..2).each do |i|
+      (0..2).each do |j|
+        simple_board[i][j] = board[i * 2][j * 2]
+      end
+    end
+    print simple_board
+  end
+
   # 00 02 04
   # 10 12 14
   # 20 22 24 
@@ -86,10 +94,4 @@ end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
-game1.player_move
-game1.convert_move
-game1.valid_move?
-game1.map_move
-game1.place_move
-game1.display_board
-
+game1.map_simple_board
