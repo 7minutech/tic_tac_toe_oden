@@ -48,9 +48,7 @@ class TicTacToe
   end
 
   def convert_move
-    move_arr = current_move.split(":")
-    move_arr.map!(&:to_i)
-    self.current_move = move_arr
+    self.current_move = current_move.split(":").map!(&:to_i)
   end
 
   def valid_move?
