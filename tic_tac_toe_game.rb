@@ -3,16 +3,20 @@ class TicTacToe
   attr_accessor :board, :current_move
 
   POSSIBLE_MOVES = (1..3).freeze
+  WINNING_COMBINAITONS = (0..7).freeze
+  BOARD_SPACES = (0..4).freeze
+
   def initialize
     @board = Array.new(5) { Array.new(5) }
     @current_move = "1:1"
     @rounds_played = 0
     @x_o = "x"
+    @simple_board = Array.new(3) {Array.new(3)}
   end
 
   def fill_board
-    (0...board.length).each do |i|
-      (0...board.length).each do |j|
+    (BOARD_SPACES).each do |i|
+      (BOARD_SPACES).each do |j|
         board[i][j] = "|" if j.odd?
         board[i][j] = "-" if i.odd?
         board[i][j] = " " if i.even? && j.even?
@@ -34,11 +38,13 @@ class TicTacToe
     print "\nMove: "
     self.current_move = gets.chomp
   end
+
   def convert_move
     move_arr = current_move.split(":")
     move_arr.map!(&:to_i)
     self.current_move = move_arr
   end
+
   def valid_move?
     current_move.each do |num|
       return false unless POSSIBLE_MOVES.include?(num)
@@ -67,6 +73,10 @@ class TicTacToe
     board[current_move[0]][current_move[1]] = @x_o
   end
 
+  
+  # 00 02 04
+  # 10 12 14
+  # 20 22 24 
   def winner?
   end
 
@@ -77,6 +87,7 @@ game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.player_move
+game1.convert_move
 game1.valid_move?
 game1.map_move
 game1.place_move
