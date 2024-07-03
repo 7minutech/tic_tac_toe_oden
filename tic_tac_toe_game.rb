@@ -132,7 +132,7 @@ class TicTacToe
   end
 
   def play_again?
-    print "Do you want to play agian? (y/n)"
+    print "Do you want to play agian? (y/n): "
     continue = gets.chomp.downcase
     if continue == "y"
       puts "Playing again..."
