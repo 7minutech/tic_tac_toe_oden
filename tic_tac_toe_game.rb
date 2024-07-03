@@ -110,10 +110,15 @@ class TicTacToe
     end
   end
 
+  def update_move_combinations
+    row_column_moves
+    diaganol_moves
+  end
+
   def play_game; end
 end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.map_simple_board
-game1.row_column_moves
+game1.update_move_combinations
