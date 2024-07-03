@@ -53,11 +53,8 @@ class TicTacToe
   end
 
   def map_move
-    p current_move
     move_arr = current_move.split(":")
-    p move_arr
     move_arr.map!(&:to_i)
-    p move_arr
     row = move_arr[0]
     col = move_arr[1]
     row -= 1
@@ -68,7 +65,7 @@ class TicTacToe
   end
 
   def place_move
-
+    board[current_move[0]][current_move[1]] = @x_o
   end
 
   def winner?
