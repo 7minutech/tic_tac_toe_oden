@@ -2,6 +2,7 @@
 class TicTacToe
   attr_accessor :board, :current_move
 
+  POSSIBLE_MOVES = (1..3).freeze
   def initialize
     @board = Array.new(5) { Array.new(5) }
     @current_move = ""
@@ -33,6 +34,15 @@ class TicTacToe
     current_move = gets.chomp
   end
 
+  def valid_move?
+    move_arr = current_move.split(":")
+    move_arr.map!(&:to_i)
+    move_arr.each do |num|
+      return false unless POSSIBLE_MOVES.include?(num)
+    end
+    true
+  end
+
   def place_move(move)
   end
 
@@ -45,4 +55,6 @@ end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
-game1.get_player_move
+#game1.get_player_move
+p game1.valid_move?
+
