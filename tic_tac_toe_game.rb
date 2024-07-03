@@ -44,11 +44,11 @@ class TicTacToe
     true
   end
   def x_o_selector
-    if rounds_played.even?
-      self.x_o = "x"
-    else
-      self.x_o = "o"
-    end
+    self.x_o = if rounds_played.even?
+                 "x"
+               else
+                 "o"
+               end
   end
 
   def map_move
