@@ -95,17 +95,8 @@ class TicTacToe
   end
 
   def diaganol_moves
-    SIMPLE_BOARD_SPACES.each do |i|
-      self.move_combinaitons += simple_board[i][i]
-    end
-    self.move_combinaitons += ","
-    counter = 2
-    SIMPLE_BOARD_SPACES.each do |i|
-      self.move_combinaitons += simple_board[i][counter]
-      counter -= 1
-    end
-    self.move_combinaitons += ","
-
+    self.move_combinaitons += "#{(0..2).map { |i| simple_board[i][i] }.join},"
+    self.move_combinaitons += "#{(0..2).map { |i| simple_board[i][2 - i] }.join},"
   end
 
   def update_move_combinations
