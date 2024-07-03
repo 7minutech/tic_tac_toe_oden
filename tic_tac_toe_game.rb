@@ -115,6 +115,16 @@ class TicTacToe
     diaganol_moves
   end
 
+  def winner?
+    if move_combinaitons.include?(PLAYER_ONE_WIN)
+      self.player_one_win = true
+    elsif move_combinaitons.include?(player_two_win)
+      self.player_two_win = true
+    else
+      false
+    end
+
+
   def play_game; end
 end
 game1 = TicTacToe.new
