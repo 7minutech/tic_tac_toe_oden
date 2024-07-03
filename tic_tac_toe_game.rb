@@ -7,6 +7,7 @@ class TicTacToe
     @board = Array.new(5) { Array.new(5) }
     @current_move = "1:1"
     @rounds_played = 0
+    @x_o = ""
   end
 
   def fill_board
@@ -42,6 +43,13 @@ class TicTacToe
     end
     true
   end
+  def x_o_selector
+    if rounds_played.even?
+      self.x_o = "x"
+    else
+      self.x_o = "o"
+  end
+
   def map_move
     mapped_move = []
     row = current_move[0]
@@ -53,7 +61,6 @@ class TicTacToe
     self.current_move = mapped_move
   end
   def place_move
-
   end
 
   def winner?
