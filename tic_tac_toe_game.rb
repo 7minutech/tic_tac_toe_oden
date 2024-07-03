@@ -92,9 +92,12 @@ class TicTacToe
     end
   end
 
-  def row_moves
+  def row_column_moves
     simple_board.each do |row|
       self.move_combinaitons += "#{row.reduce { |result, space| result + space }},"
+    end
+    simple_board.transpose.each do |col|
+      self.move_combinaitons += "#{col.reduce { |result, space| result + space }},"
     end
   end
 
@@ -105,7 +108,7 @@ class TicTacToe
     self.move_combinaitons += ","
     counter = 2
     SIMPLE_BOARD_SPACES.each do |i|
-      self.move_combinaitons += simple_board[i][i]
+      self.move_combinaitons += simple_board[i][counter]
       counter -= 1
     end
     self.move_combinaitons += ","
@@ -114,9 +117,8 @@ class TicTacToe
 
   def update_move_combinations
     self.move_combinaitons = ""
-    row_moves
+    row_column_moves
     diaganol_moves
-    puts move_combinaitons
   end
 
   def winner?
@@ -133,16 +135,6 @@ class TicTacToe
 
   def next_round
     self.rounds_played += 1
-  end
-
-  def reset
-    @player_one_win = false
-    @player_two_win = false
-    @move_combinaitons = ""
-    @game_over = false
-    @current_move = " "
-    @rounds_played = 0
-    @x_o = " "
   end
 
   def play_game
