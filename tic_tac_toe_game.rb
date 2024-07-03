@@ -25,9 +25,13 @@ class TicTacToe
   def fill_board
     BOARD_SPACES.each do |i|
       BOARD_SPACES.each do |j|
-        board[i][j] = "|" if j.odd?
-        board[i][j] = "-" if i.odd?
-        board[i][j] = " " if i.even? && j.even?
+        board[i][j] = if i.odd?
+                        "-"
+                      elsif j.odd?
+                        "|"
+                      else
+                        " "
+                      end
       end
     end
   end
@@ -52,7 +56,7 @@ class TicTacToe
   end
 
   def valid_move?
-    if current_move.all? {|num| POSSIBLE_MOVES.include?(num)}
+    if current_move.all? { |num| POSSIBLE_MOVES.include?(num) }
       true
     else
       puts "Row and Column must be between [1,3]"
