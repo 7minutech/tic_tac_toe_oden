@@ -37,12 +37,7 @@ class TicTacToe
   end
 
   def display_board
-    board.each do |row|
-      row.each do |col|
-        print col
-      end
-      print "\n"
-    end
+    board.each { |row| puts row.join }
   end
 
   def player_move
