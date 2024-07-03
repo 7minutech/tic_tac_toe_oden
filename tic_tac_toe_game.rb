@@ -135,10 +135,14 @@ class TicTacToe
     print "Do you want to play agian? (y/n)"
     continue = gets.chomp.downcase
     if continue == "y"
+      print "Playing again..."
       true
     else
+      print "Exiting game..."
       false
     end
+  end
+
 
   def play_game
     fill_board
@@ -155,6 +159,8 @@ class TicTacToe
       update_move_combinations
       self.game_over = true if winner?
     end
+    if play_again? == true
+      play_game
   end
 end
 game1 = TicTacToe.new
