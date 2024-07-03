@@ -118,7 +118,7 @@ class TicTacToe
   def winner?
     if move_combinaitons.include?(PLAYER_ONE_WIN)
       self.player_one_win = true
-    elsif move_combinaitons.include?(player_two_win)
+    elsif move_combinaitons.include?(PLAYER_TWO_WIN)
       self.player_two_win = true
     else
       false
