@@ -5,7 +5,7 @@ class TicTacToe
   POSSIBLE_MOVES = (1..3).freeze
   def initialize
     @board = Array.new(5) { Array.new(5) }
-    @current_move = ""
+    @current_move = "1:1"
     @rounds_played = 0
   end
 
@@ -42,8 +42,17 @@ class TicTacToe
     end
     true
   end
-
-  def place_move(move)
+  def map_move
+    mapped_move = []
+    row = current_move[0]
+    col = current_move[1]
+    row -= 1
+    col = (col - 1) * 2
+    mapped_move.push(row)
+    mapped_move.push(col)
+    mapped_move
+  end
+  def place_move
   end
 
   def winner?
@@ -55,6 +64,8 @@ end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
-#game1.get_player_move
-p game1.valid_move?
+game1.get_player_move
+game1.place_move
+game1.display_board
+
 
