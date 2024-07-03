@@ -79,12 +79,8 @@ class TicTacToe
   end
 
   def row_column_moves
-    simple_board.each do |row|
-      self.move_combinaitons += "#{row.join},"
-    end
-    simple_board.transpose.each do |col|
-      self.move_combinaitons += "#{col.join},"
-    end
+    simple_board.each { |row| self.move_combinaitons += "#{row.join}," }
+    simple_board.transpose.each { |col| self.move_combinaitons += "#{col.join}," }
   end
 
   def diaganol_moves
