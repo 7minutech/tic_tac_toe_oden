@@ -131,6 +131,15 @@ class TicTacToe
     self.rounds_played += 1
   end
 
+  def play_again?
+    print "Do you want to play agian? (y/n)"
+    continue = gets.chomp.downcase
+    if continue == "y"
+      true
+    else
+      false
+    end
+
   def play_game
     fill_board
     display_board
