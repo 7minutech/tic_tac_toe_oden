@@ -121,9 +121,14 @@ class TicTacToe
     if move_combinaitons.include?(PLAYER_ONE_WIN)
       puts "Player one wins!"
       self.player_one_win = true
+      true
     elsif move_combinaitons.include?(PLAYER_TWO_WIN)
       puts "Player two wins!"
       self.player_two_win = true
+      true
+    elsif rounds_played >= 9
+      puts "It's a tie!"
+      true
     else
       false
     end
