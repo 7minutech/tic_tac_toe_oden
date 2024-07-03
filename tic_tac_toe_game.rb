@@ -171,5 +171,3 @@ class TicTacToe
 end
 game1 = TicTacToe.new
 game1.play_game
-
-# need to check if a that move has been played
