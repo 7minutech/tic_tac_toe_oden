@@ -7,7 +7,7 @@ class TicTacToe
     @board = Array.new(5) { Array.new(5) }
     @current_move = "1:1"
     @rounds_played = 0
-    @x_o = ""
+    @x_o = "x"
   end
 
   def fill_board
@@ -32,7 +32,7 @@ class TicTacToe
   def get_player_move
     print "Enter your move in row:column formate, like \"1:1\" for row 1 column 1"
     print "\nMove: "
-    current_move = gets.chomp
+    self.current_move = gets.chomp
   end
 
   def valid_move?
@@ -43,6 +43,7 @@ class TicTacToe
     end
     true
   end
+
   def x_o_selector
     self.x_o = if rounds_played.even?
                  "x"
@@ -52,16 +53,22 @@ class TicTacToe
   end
 
   def map_move
-    mapped_move = []
-    row = current_move[0]
-    col = current_move[1]
+    p current_move
+    move_arr = current_move.split(":")
+    p move_arr
+    move_arr.map!(&:to_i)
+    p move_arr
+    row = move_arr[0]
+    col = move_arr[1]
     row -= 1
     col = (col - 1) * 2
-    mapped_move.push(row)
-    mapped_move.push(col)
-    self.current_move = mapped_move
+    move_arr[0] = row
+    move_arr[1] = col
+    self.current_move = move_arr
   end
+
   def place_move
+
   end
 
   def winner?
@@ -74,6 +81,8 @@ game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.get_player_move
+game1.valid_move?
+game1.map_move
 game1.place_move
 game1.display_board
 
