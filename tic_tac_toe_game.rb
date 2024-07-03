@@ -5,6 +5,7 @@ class TicTacToe
   POSSIBLE_MOVES = (1..3).freeze
   WINNING_COMBINAITONS = (0..7).freeze
   BOARD_SPACES = (0..4).freeze
+  SIMPLE_BOARD_SPACES = (0..2).freeze
   PLAYER_ONE_WIN = "xxx"
   PLAYER_TWO_WIN = "ooo"
 
@@ -16,7 +17,7 @@ class TicTacToe
     @simple_board = Array.new(3) {Array.new(3)}
     @player_one_win = false
     @player_two_win = false
-    @move_combinaitons = []
+    @move_combinaitons = ""
   end
 
   def fill_board
@@ -88,12 +89,14 @@ class TicTacToe
 
   def row_column_moves
     col_arr = []
+    row_col_str = ""
     simple_board.each do |row|
       row.each { |col| col_arr.push(col) }
       row_col_str += "#{col_arr.reduce { |result, space| result + space }},"
       row_col_str += "#{row.reduce { |result, space| result + space }},"
+      col_arr.clear
     end
-    self.move_combinaitons = row_col_str.spilt
+    self.move_combinaitons = row_col_str
   end
 
   def play_game; end
@@ -102,4 +105,4 @@ game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.map_simple_board
-
+game1.row_column_moves
