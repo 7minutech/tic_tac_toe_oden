@@ -71,8 +71,8 @@ class TicTacToe
   end
 
   def map_simple_board
-    (0..2).each do |i|
-      (0..2).each do |j|
+    SIMPLE_BOARD_SPACES.each do |i|
+      SIMPLE_BOARD_SPACES.each do |j|
         simple_board[i][j] = board[i * 2][j * 2]
       end
     end
