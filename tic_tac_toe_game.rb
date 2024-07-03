@@ -48,6 +48,7 @@ class TicTacToe
       self.x_o = "x"
     else
       self.x_o = "o"
+    end
   end
 
   def map_move
@@ -75,5 +76,4 @@ game1.display_board
 game1.get_player_move
 game1.place_move
 game1.display_board
-
 
