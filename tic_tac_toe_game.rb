@@ -50,9 +50,10 @@ class TicTacToe
     col = (col - 1) * 2
     mapped_move.push(row)
     mapped_move.push(col)
-    mapped_move
+    self.current_move = mapped_move
   end
   def place_move
+
   end
 
   def winner?
