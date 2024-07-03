@@ -52,21 +52,16 @@ class TicTacToe
   end
 
   def valid_move?
-    current_move.each do |num|
-      unless POSSIBLE_MOVES.include?(num)
-        puts "Row and Column must be between [1,3]"
-        return false
-      end
+    if current_move.all? {|num| POSSIBLE_MOVES.include?(num)}
+      true
+    else
+      puts "Row and Column must be between [1,3]"
+      false
     end
-    true
   end
 
   def x_o_selector
-    self.x_o = if rounds_played.even?
-                 "x"
-               else
-                 "o"
-               end
+    self.x_o = rounds_played.even? ? "x" : "o"
   end
 
   def map_move
