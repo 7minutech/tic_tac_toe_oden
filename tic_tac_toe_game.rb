@@ -40,9 +40,7 @@ class TicTacToe
     self.current_move = move_arr
   end
   def valid_move?
-    move_arr = current_move.split(":")
-    move_arr.map!(&:to_i)
-    move_arr.each do |num|
+    current_move.each do |num|
       return false unless POSSIBLE_MOVES.include?(num)
     end
     true
@@ -57,15 +55,12 @@ class TicTacToe
   end
 
   def map_move
-    move_arr = current_move.split(":")
-    move_arr.map!(&:to_i)
-    row = move_arr[0]
-    col = move_arr[1]
+    row = current_move[0]
+    col = current_move[1]
     row -= 1
     col = (col - 1) * 2
-    move_arr[0] = row
-    move_arr[1] = col
-    self.current_move = move_arr
+    current_move[0] = row
+    current_move[1] = col
   end
 
   def place_move
