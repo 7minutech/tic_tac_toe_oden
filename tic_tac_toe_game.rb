@@ -1,6 +1,6 @@
 # class that sets up a game of tic tac toe
 class TicTacToe
-  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win, :player_two_win
+  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win, :player_two_win, :move_combinaitons
 
   POSSIBLE_MOVES = (1..3).freeze
   WINNING_COMBINAITONS = (0..7).freeze
@@ -16,6 +16,7 @@ class TicTacToe
     @simple_board = Array.new(3) {Array.new(3)}
     @player_one_win = false
     @player_two_win = false
+    @move_combinaitons = []
   end
 
   def fill_board
@@ -85,32 +86,20 @@ class TicTacToe
     end
   end
 
-  # 00 01 02
-  # 10 11 12
-  # 20 21 23 
-  def winner?
-    row_arr = []
+  def row_column_moves
     col_arr = []
     simple_board.each do |row|
-      row_arr = row
-      row.each do |col|
-        col_arr.push(col)
-      end
-      col_str = col_arr.reduce {|result,space| result + space}
-      row_str = row_arr.reduce {|result,space| result + space}
-      self.player_one_win = true if col_str == PLAYER_ONE_WIN || row_str == PLAYER_ONE_WIN
-      self.player_one_win = true if col_str == PLAYER_TWO_WIN || row_str == PLAYER_TWO_WIN
-      col_arr.clear
+      row.each { |col| col_arr.push(col) }
+      row_col_str += "#{col_arr.reduce { |result, space| result + space }},"
+      row_col_str += "#{row.reduce { |result, space| result + space }},"
     end
-    puts player_one_win
-    puts player_two_win
+    self.move_combinaitons = row_col_str.spilt
   end
 
-  def play_game
-  end
+  def play_game; end
 end
 game1 = TicTacToe.new
 game1.fill_board
 game1.display_board
 game1.map_simple_board
-game1.winner?
+
