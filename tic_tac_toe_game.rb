@@ -41,8 +41,7 @@ class TicTacToe
   end
 
   def player_move
-    print "Enter your move in row:column formate, like \"1:1\" for row 1 column 1"
-    print "\nMove: "
+    print "Enter your move in row:column formate, like \"1:1\" for row 1 column 1\nMove:"
     self.current_move = gets.chomp
   end
 
