@@ -1,8 +1,5 @@
 # class that sets up a game of tic tac toe
 class TicTacToe
-  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win,
-                :player_two_win, :move_combinaitons, :game_over, :rounds_played
-
   POSSIBLE_MOVES = (1..3).freeze
   BOARD_SPACES = (0..4).freeze
   SIMPLE_BOARD_SPACES = (0..2).freeze
@@ -22,6 +19,11 @@ class TicTacToe
     @move_combinaitons = ""
     @game_over = false
   end
+
+  private
+
+  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win,
+                :player_two_win, :move_combinaitons, :game_over, :rounds_played
 
   def fill_board
     BOARD_SPACES.each do |i|
@@ -148,6 +150,8 @@ class TicTacToe
     self.rounds_played = 0
   end
 
+  public
+
   def play_game
     fill_board
     display_board
@@ -169,5 +173,5 @@ class TicTacToe
     play_game
   end
 end
-game1 = TicTacToe.new
-game1.play_game
+tic_tac_toe_game = TicTacToe.new
+tic_tac_toe_game.play_game
