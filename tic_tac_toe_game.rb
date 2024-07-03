@@ -6,15 +6,15 @@ class TicTacToe
   WINNING_COMBINAITONS = (0..7).freeze
   BOARD_SPACES = (0..4).freeze
   SIMPLE_BOARD_SPACES = (0..2).freeze
-  PLAYER_ONE_WIN = "xxx"
-  PLAYER_TWO_WIN = "ooo"
+  PLAYER_ONE_WIN = "xxx".freeze
+  PLAYER_TWO_WIN = "ooo".freeze
 
   def initialize
     @board = Array.new(5) { Array.new(5) }
-    @current_move = "1:1"
+    @current_move = " "
     @rounds_played = 0
-    @x_o = "x"
-    @simple_board = Array.new(3) {Array.new(3)}
+    @x_o = " "
+    @simple_board = Array.new(3) { Array.new(3) }
     @player_one_win = false
     @player_two_win = false
     @move_combinaitons = ""
@@ -123,7 +123,7 @@ class TicTacToe
     else
       false
     end
-
+  end
 
   def play_game; end
 end
