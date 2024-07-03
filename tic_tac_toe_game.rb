@@ -4,7 +4,6 @@ class TicTacToe
                 :player_two_win, :move_combinaitons, :game_over, :rounds_played
 
   POSSIBLE_MOVES = (1..3).freeze
-  WINNING_COMBINAITONS = (0..7).freeze
   BOARD_SPACES = (0..4).freeze
   SIMPLE_BOARD_SPACES = (0..2).freeze
   PLAYER_ONE_WIN = "xxx".freeze
@@ -15,6 +14,8 @@ class TicTacToe
     @current_move = " "
     @rounds_played = 0
     @x_o = " "
+    # mapped board that is just the x's and o's
+    # easier to check for winner b/c of conversion to str from arr
     @simple_board = Array.new(3) { Array.new(3) }
     @player_one_win = false
     @player_two_win = false
