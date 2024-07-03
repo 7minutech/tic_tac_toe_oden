@@ -74,7 +74,7 @@ class TicTacToe
   end
 
   def place_move
-    board[current_move[0]][current_move[1]] = @x_o
+    board[current_move[0]][current_move[1]] = x_o
   end
 
   def map_simple_board
@@ -87,10 +87,10 @@ class TicTacToe
 
   def row_column_moves
     simple_board.each do |row|
-      self.move_combinaitons += "#{row.reduce { |result, space| result + space }},"
+      self.move_combinaitons += "#{row.join},"
     end
     simple_board.transpose.each do |col|
-      self.move_combinaitons += "#{col.reduce { |result, space| result + space }},"
+      self.move_combinaitons += "#{col.join},"
     end
   end
 
