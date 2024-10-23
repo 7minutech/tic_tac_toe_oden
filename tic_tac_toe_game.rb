@@ -9,6 +9,7 @@ class TicTacToe
 
   def initialize
     @board = Array.new(5) { Array.new(5) }
+    @simple_board = Array.new(3) { Array.new(3) }
     fill_board
     @current_move = " "
     @rounds_played = 0
@@ -107,7 +108,7 @@ class TicTacToe
   end
 
   def update_move_combinations
-    map_simple_board
+    simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
     self.move_combinaitons = ""
     row_column_moves
     diaganol_moves
