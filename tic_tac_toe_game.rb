@@ -161,11 +161,11 @@ class TicTacToe
     until game_over == true
       valid_player_move
       turn_selector
-      next_round
       place_move
       display_board
       update_move_combinations
       self.game_over = true if winner?
+      next_round
       p move_combinaitons
     end
     return unless play_again? == true
