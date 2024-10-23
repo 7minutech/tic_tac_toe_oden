@@ -1,6 +1,7 @@
+require "pry-byebug"
 # class that sets up a game of tic tac toe
 class TicTacToe
-  POSSIBLE_MOVES = (1..3).freeze
+  POSSIBLE_MOVES = [0, 2, 4].freeze
   BOARD_SPACES = (0..4).freeze
   SIMPLE_BOARD_SPACES = (0..2).freeze
   PLAYER_ONE_WIN = "xxx".freeze
@@ -56,15 +57,16 @@ class TicTacToe
       player_move
       convert_move
     end
-    translate_move
   end
 
   def convert_move
     self.current_move = current_move.split(":").map!(&:to_i)
+    current_move.map! { |move| (move - 1) * 2 }
   end
 
   def move_placed?
-    if board[translate_move(current_move[0])][translate_move(current_move[1])] == " "
+    binding.pry
+    if board[current_move[0]][current_move[1]] == " "
       false
     else
       puts "#{current_move} has already been placed"
@@ -73,6 +75,7 @@ class TicTacToe
   end
 
   def valid_move?
+    # binding.pry
     if current_move.all? { |num| POSSIBLE_MOVES.include?(num) } && !move_placed?
       true
     else
@@ -87,7 +90,7 @@ class TicTacToe
 
   def translate_move
     # move 1:1 is really 0:0 on board
-    current_move.map! { |move| (move.to_i - 1) * 2 }
+    current_move.map! { |move| (move - 1) * 2 }
   end
 
   def map_move
@@ -171,11 +174,7 @@ class TicTacToe
   def play_game
     display_board
     until game_over == true
-      player_move
-      convert_move
-      next unless valid_move?
-
-      map_move
+      valid_player_move
       pick_x_o
       place_move
       display_board
