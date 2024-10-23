@@ -89,16 +89,11 @@ class TicTacToe
     board[current_move[0]][current_move[1]] = @player_turn
   end
 
-  def map_simple_board
-    SIMPLE_BOARD_SPACES.each do |i|
-      SIMPLE_BOARD_SPACES.each do |j|
-        simple_board[i][j] = board[i * 2][j * 2]
-      end
-    end
+  def row_moves
+    simple_board.each { |row| self.move_combinaitons += "#{row.join}," }
   end
 
-  def row_column_moves
-    simple_board.each { |row| self.move_combinaitons += "#{row.join}," }
+  def column_moves
     simple_board.transpose.each { |col| self.move_combinaitons += "#{col.join}," }
   end
 
