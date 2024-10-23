@@ -1,3 +1,4 @@
+require_relative "../lib"
 describe TicTacToe do
   describe "#method" do
     context "" do
