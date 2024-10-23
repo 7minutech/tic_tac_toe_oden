@@ -168,13 +168,8 @@ class TicTacToe
   def play_game
     display_board
     until game_over == true
-      valid_player_move
-      turn_selector
-      place_move
-      display_board
-      update_move_combinations
+      play_round
       self.game_over = true if winner?
-      next_round
       p move_combinaitons
     end
     return unless play_again? == true
