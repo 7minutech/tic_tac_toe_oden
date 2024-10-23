@@ -102,11 +102,16 @@ class TicTacToe
     self.move_combinaitons += "#{(0..2).map { |i| simple_board[i][2 - i] }.join},"
   end
 
+  def add_move_combinations
+    add_row_moves
+    add_column_moves
+    add_diaganol_moves
+  end
+
   def update_move_combinations
     simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
     self.move_combinaitons = ""
-    row_column_moves
-    diaganol_moves
+    add_move_combinations
   end
 
   def game_over?
