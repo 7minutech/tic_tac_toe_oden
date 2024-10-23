@@ -154,6 +154,15 @@ class TicTacToe
     self.rounds_played = 0
   end
 
+  def play_round
+    valid_player_move
+    turn_selector
+    place_move
+    update_move_combinations
+    next_round
+    display_board
+  end
+
   public
 
   def play_game
