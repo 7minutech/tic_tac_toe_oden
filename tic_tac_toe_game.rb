@@ -19,7 +19,6 @@ class TicTacToe
     @player_one_win = false
     @player_two_win = false
     @move_combinaitons = ""
-    @game_over = false
   end
 
   private
@@ -137,7 +136,6 @@ class TicTacToe
   end
 
   def reset
-    self.game_over = false
     self.rounds_played = 0
   end
 
