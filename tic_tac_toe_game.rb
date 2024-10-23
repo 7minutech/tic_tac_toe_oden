@@ -12,7 +12,7 @@ class TicTacToe
     fill_board
     @current_move = " "
     @rounds_played = 0
-    @x_o = " "
+    @player_turn = " "
     # mapped board that is just the x's and o's
     # easier to check for winner b/c of conversion to str from arr
     @simple_board = Array.new(3) { Array.new(3) }
@@ -24,7 +24,7 @@ class TicTacToe
 
   private
 
-  attr_accessor :board, :current_move, :x_o, :simple_board, :player_one_win,
+  attr_accessor :board, :current_move, :player_turn, :simple_board, :player_one_win,
                 :player_two_win, :move_combinaitons, :game_over, :rounds_played
 
   def fill_board
@@ -83,12 +83,12 @@ class TicTacToe
     end
   end
 
-  def x_o_selector
-    self.x_o = rounds_played.even? ? "x" : "o"
+  def turn_selector
+    @player_turn = rounds_played.even? ? "x" : "o"
   end
 
   def place_move
-    board[current_move[0]][current_move[1]] = x_o
+    board[current_move[0]][current_move[1]] = @player_turn
   end
 
   def map_simple_board
@@ -114,11 +114,6 @@ class TicTacToe
     self.move_combinaitons = ""
     row_column_moves
     diaganol_moves
-  end
-
-  def pick_x_o
-    x_o_selector
-    next_round
   end
 
   def winner?
@@ -165,7 +160,8 @@ class TicTacToe
     display_board
     until game_over == true
       valid_player_move
-      pick_x_o
+      turn_selector
+      next_round
       place_move
       display_board
       update_move_combinations
