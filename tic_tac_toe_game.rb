@@ -116,21 +116,8 @@ class TicTacToe
     diaganol_moves
   end
 
-  def winner?
-    if move_combinaitons.include?(PLAYER_ONE_WIN)
-      puts "Player one wins!"
-      self.player_one_win = true
-      true
-    elsif move_combinaitons.include?(PLAYER_TWO_WIN)
-      puts "Player two wins!"
-      self.player_two_win = true
-      true
-    elsif rounds_played >= 9
-      puts "It's a tie!"
-      true
-    else
-      false
-    end
+  def game_over?
+    move_combinaitons.include?(PLAYER_ONE_WIN) || move_combinaitons.include?(PLAYER_TWO_WIN) || rounds_played >= 9
   end
 
   def next_round
@@ -167,9 +154,8 @@ class TicTacToe
 
   def play_game
     display_board
-    until game_over == true
+    until game_over?
       play_round
-      self.game_over = true if winner?
       p move_combinaitons
     end
     return unless play_again? == true
