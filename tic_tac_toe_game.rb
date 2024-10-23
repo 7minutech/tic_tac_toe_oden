@@ -49,6 +49,16 @@ class TicTacToe
     self.current_move = gets.chomp
   end
 
+  def valid_player_move
+    player_move
+    convert_move
+    until valid_move?
+      player_move
+      convert_move
+    end
+    translate_move
+  end
+
   def convert_move
     self.current_move = current_move.split(":").map!(&:to_i)
   end
@@ -75,9 +85,9 @@ class TicTacToe
     self.x_o = rounds_played.even? ? "x" : "o"
   end
 
-  def translate_move(num)
+  def translate_move
     # move 1:1 is really 0:0 on board
-    (num - 1) * 2
+    current_move.map! { |move| (move.to_i - 1) * 2 }
   end
 
   def map_move
