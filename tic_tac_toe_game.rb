@@ -16,8 +16,6 @@ class TicTacToe
     # mapped board that is just the x's and o's
     # easier to check for winner b/c of conversion to str from arr
     @simple_board = Array.new(3) { Array.new(3) }
-    @player_one_win = false
-    @player_two_win = false
     @move_combinaitons = ""
   end
 
