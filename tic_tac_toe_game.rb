@@ -136,7 +136,11 @@ class TicTacToe
   end
 
   def reset
-    self.rounds_played = 0
+    fill_board
+    @current_move = " "
+    @rounds_played = 0
+    @player_turn = " "
+    @move_combinaitons = ""
   end
 
   def play_round
