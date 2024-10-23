@@ -65,7 +65,6 @@ class TicTacToe
   end
 
   def move_placed?
-    binding.pry
     if board[current_move[0]][current_move[1]] == " "
       false
     else
@@ -86,15 +85,6 @@ class TicTacToe
 
   def x_o_selector
     self.x_o = rounds_played.even? ? "x" : "o"
-  end
-
-  def translate_move
-    # move 1:1 is really 0:0 on board
-    current_move.map! { |move| (move - 1) * 2 }
-  end
-
-  def map_move
-    self.current_move = current_move.map { |n| translate_move(n) }
   end
 
   def place_move
