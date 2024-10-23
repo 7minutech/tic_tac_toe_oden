@@ -8,6 +8,7 @@ class TicTacToe
 
   def initialize
     @board = Array.new(5) { Array.new(5) }
+    fill_board
     @current_move = " "
     @rounds_played = 0
     @x_o = " "
@@ -158,7 +159,6 @@ class TicTacToe
   public
 
   def play_game
-    fill_board
     display_board
     until game_over == true
       player_move
@@ -171,6 +171,7 @@ class TicTacToe
       display_board
       update_move_combinations
       self.game_over = true if winner?
+      p move_combinaitons
     end
     return unless play_again? == true
 
