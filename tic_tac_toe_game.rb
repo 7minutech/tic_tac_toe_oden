@@ -155,10 +155,7 @@ class TicTacToe
 
   def play_game
     display_board
-    until game_over?
-      play_round
-      p move_combinaitons
-    end
+    play_round until game_over?
     return unless play_again? == true
 
     reset
