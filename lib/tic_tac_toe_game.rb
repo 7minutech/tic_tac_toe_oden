@@ -58,7 +58,7 @@ class TicTacToe
   end
 
   def convert_move
-    self.current_move = current_move.split(":").map!(&:to_i)
+    self.current_move = current_move.split(",").map!(&:to_i)
     current_move.map! { |move| (move - 1) * 2 }
   end
 
