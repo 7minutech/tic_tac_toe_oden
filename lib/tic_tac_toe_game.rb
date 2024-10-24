@@ -40,7 +40,15 @@ class TicTacToe
   end
 
   def display_board
-    board.each { |row| puts row.join }
+    print "  1 2 3\n"
+
+    board.each_with_index do |row, index|
+      if index.even?
+        print "#{(index / 2) + 1} #{row.join}\n"
+      else
+        print "  #{row.join}\n"
+      end
+    end
   end
 
   def player_move
