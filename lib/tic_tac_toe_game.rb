@@ -108,6 +108,10 @@ class TicTacToe
     add_diaganol_moves
   end
 
+  def clear_simple_board
+    @simple_board.each { |row| row.fill(" ") }
+  end
+
   def update_move_combinations
     simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
     self.move_combinaitons = ""
@@ -136,6 +140,7 @@ class TicTacToe
 
   def reset
     fill_board
+    clear_simple_board
     @current_move = " "
     @rounds_played = 0
     @player_turn = " "
