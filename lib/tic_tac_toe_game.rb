@@ -142,6 +142,16 @@ class TicTacToe
     @move_combinaitons = ""
   end
 
+  def game_end_message
+    if @player_turn == "x"
+      puts "Player 1 wins!!!"
+    elsif @player_turn == "o"
+      puts "Player 2 wins!!!"
+    else
+      puts "Stalemate, no one could win"
+    end
+  end
+
   def play_round
     valid_player_move
     turn_selector
@@ -156,6 +166,7 @@ class TicTacToe
   def play_game
     display_board
     play_round until game_over?
+    game_end_message
     return unless play_again? == true
 
     reset
