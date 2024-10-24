@@ -52,8 +52,11 @@ class TicTacToe
   end
 
   def player_move
-    print "Enter your move in row:column formate, like \"1:1\" for row 1 column 1\nMove:"
+    print "Enter your move in row,column format, like \"1,1\" for row 1 column 1 or q to quit \nMove:"
     self.current_move = gets.chomp
+    return unless current_move == "q"
+
+    abort "Exiting game..."
   end
 
   def valid_player_move
