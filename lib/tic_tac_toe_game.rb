@@ -17,13 +17,13 @@ class TicTacToe
     # mapped board that is just the x's and o's
     # easier to check for winner b/c of conversion to str from arr
     @simple_board = Array.new(3) { Array.new(3) }
-    @move_combinaitons = ""
+    @move_combinations = ""
   end
 
   private
 
   attr_accessor :board, :current_move, :player_turn, :simple_board, :player_one_win,
-                :player_two_win, :move_combinaitons, :game_over, :rounds_played
+                :player_two_win, :move_combinations, :game_over, :rounds_played
 
   def fill_board
     BOARD_SPACES.each do |i|
@@ -101,16 +101,16 @@ class TicTacToe
   end
 
   def add_row_moves
-    simple_board.each { |row| self.move_combinaitons += "#{row.join}," }
+    simple_board.each { |row| self.move_combinations += "#{row.join}," }
   end
 
   def add_column_moves
-    simple_board.transpose.each { |col| self.move_combinaitons += "#{col.join}," }
+    simple_board.transpose.each { |col| self.move_combinations += "#{col.join}," }
   end
 
   def add_diaganol_moves
-    self.move_combinaitons += "#{(0..2).map { |i| simple_board[i][i] }.join},"
-    self.move_combinaitons += "#{(0..2).map { |i| simple_board[i][2 - i] }.join},"
+    self.move_combinations += "#{(0..2).map { |i| simple_board[i][i] }.join},"
+    self.move_combinations += "#{(0..2).map { |i| simple_board[i][2 - i] }.join},"
   end
 
   def add_move_combinations
@@ -125,12 +125,12 @@ class TicTacToe
 
   def update_move_combinations
     simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
-    self.move_combinaitons = ""
+    self.move_combinations = ""
     add_move_combinations
   end
 
   def game_over?
-    move_combinaitons.include?(PLAYER_ONE_WIN) || move_combinaitons.include?(PLAYER_TWO_WIN) || rounds_played >= 9
+    move_combinations.include?(PLAYER_ONE_WIN) || move_combinations.include?(PLAYER_TWO_WIN) || rounds_played >= 9
   end
 
   def next_round
@@ -155,7 +155,7 @@ class TicTacToe
     @current_move = " "
     @rounds_played = 0
     @player_turn = " "
-    @move_combinaitons = ""
+    @move_combinations = ""
   end
 
   def game_end_message
