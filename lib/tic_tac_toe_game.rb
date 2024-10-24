@@ -9,13 +9,12 @@ class TicTacToe
 
   def initialize
     @board = Array.new(5) { Array.new(5) }
+    # for only holding values and not displaying
     @simple_board = Array.new(3) { Array.new(3) }
     fill_board
     @current_move = " "
     @rounds_played = 0
     @player_turn = " "
-    # mapped board that is just the x's and o's
-    # easier to check for winner b/c of conversion to str from arr
     @move_combinations = ""
   end
 
@@ -69,6 +68,7 @@ class TicTacToe
 
   def convert_move
     self.current_move = current_move.split(",").map!(&:to_i)
+    # 1,2 is actaully 0,2
     current_move.map! { |move| (move - 1) * 2 }
   end
 
@@ -82,7 +82,6 @@ class TicTacToe
   end
 
   def valid_move?
-    # binding.pry
     if current_move.all? { |num| POSSIBLE_MOVES.include?(num) } && !move_placed?
       true
     else
@@ -125,6 +124,7 @@ class TicTacToe
   def update_move_combinations
     simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
     self.move_combinations = ""
+    # need to add each row, column, and diagnol for checking
     add_move_combinations
   end
 
