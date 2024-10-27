@@ -35,4 +35,17 @@ describe TicTacToe do
       expect(active_game).to eq(false)
     end
   end
+  describe "#play_game" do
+    before do
+      allow(game).to receive(:gets).and_return("1,1", "2,1", "2,2", "3,1", "3,3", "n")
+    end
+    it "plays rounds until the game is over" do
+      exiting_message = "Exiting game..."
+      winner_message = "Player 1 wins!!!"
+
+      expect(game).to receive(:puts).with(winner_message)
+      expect(game).to receive(:puts).with(exiting_message)
+      game.play_game
+    end
+  end
 end
