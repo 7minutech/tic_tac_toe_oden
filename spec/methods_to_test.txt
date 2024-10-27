@@ -4,21 +4,14 @@
 # 4. Looping Script - Only calls other methods, usually without returning
 #    anything, and stops when certain conditions are met.
 
+looping script test condition
+it valid_player_move
+it play_game
 
-public command or query
-#game_over?
-fill_board
-convert_move
-move_placed?
-valid_move?
-turn_selector
-place_move
-add_row_moves
-add_column_moves
-add_diaganol_moves
-clear_simple_board
-update_move_combinations
-reset
-public command or query in a script or looping script
-play game
-valid_player_move
+command and query inside public script methods
+should tested and made public
+it play_game  
+      #game_over?
+      play_again?
+      reset
+
