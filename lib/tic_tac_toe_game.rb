@@ -90,14 +90,6 @@ class TicTacToe
     end
   end
 
-  def turn_selector
-    @player_turn = rounds_played.even? ? "x" : "o"
-  end
-
-  def place_move
-    board[current_move[0]][current_move[1]] = @player_turn
-  end
-
   def add_row_moves
     simple_board.each { |row| self.move_combinations += "#{row.join}," }
   end
@@ -121,6 +113,10 @@ class TicTacToe
     @simple_board.each { |row| row.fill(" ") }
   end
 
+  def turn_selector
+    @player_turn = rounds_played.even? ? "x" : "o"
+  end
+
   def update_move_combinations
     simple_board[current_move[0] / 2][current_move[1] / 2] = @player_turn
     self.move_combinations = ""
@@ -130,6 +126,29 @@ class TicTacToe
 
   def next_round
     self.rounds_played += 1
+  end
+
+  def place_move
+    board[current_move[0]][current_move[1]] = @player_turn
+  end
+
+  def game_end_message
+    if @player_turn == "x"
+      puts "Player 1 wins!!!"
+    elsif @player_turn == "o"
+      puts "Player 2 wins!!!"
+    else
+      puts "Stalemate, no one could win"
+    end
+  end
+
+  def play_round
+    valid_player_move
+    turn_selector
+    place_move
+    update_move_combinations
+    next_round
+    display_board
   end
 
   public
@@ -157,25 +176,6 @@ class TicTacToe
     @rounds_played = 0
     @player_turn = " "
     @move_combinations = ""
-  end
-
-  def game_end_message
-    if @player_turn == "x"
-      puts "Player 1 wins!!!"
-    elsif @player_turn == "o"
-      puts "Player 2 wins!!!"
-    else
-      puts "Stalemate, no one could win"
-    end
-  end
-
-  def play_round
-    valid_player_move
-    turn_selector
-    place_move
-    update_move_combinations
-    next_round
-    display_board
   end
 
   def play_game
