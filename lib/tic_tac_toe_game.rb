@@ -128,12 +128,14 @@ class TicTacToe
     add_move_combinations
   end
 
-  def game_over?
-    move_combinations.include?(PLAYER_ONE_WIN) || move_combinations.include?(PLAYER_TWO_WIN) || rounds_played >= 9
-  end
-
   def next_round
     self.rounds_played += 1
+  end
+
+  public
+
+  def game_over?
+    move_combinations.include?(PLAYER_ONE_WIN) || move_combinations.include?(PLAYER_TWO_WIN) || rounds_played >= 9
   end
 
   def play_again?
@@ -175,8 +177,6 @@ class TicTacToe
     next_round
     display_board
   end
-
-  public
 
   def play_game
     display_board
