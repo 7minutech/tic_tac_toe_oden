@@ -48,4 +48,15 @@ describe TicTacToe do
       game.play_game
     end
   end
+
+  describe "#reset" do
+    before do
+      allow(game).to receive(:gets).and_return("1,1", "2,1", "2,2")
+      3.times { game.send(:play_round) }
+    end
+    it "returns that state of the object back to initilization" do
+      game.send(:reset)
+      expect(game.rounds_played).to eq(0)
+    end
+  end
 end
