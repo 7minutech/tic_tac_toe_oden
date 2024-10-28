@@ -56,7 +56,8 @@ describe TicTacToe do
     end
     it "returns that state of the object back to initilization" do
       game.send(:reset)
-      expect(game.rounds_played).to eq(0)
+      expect(game).to have_attributes(current_move: " ", rounds_played: 0, player_turn: " ", move_combinations: " ")
+      expect(game.simple_board).to all(be == [" ", " ", " "])
     end
   end
 
