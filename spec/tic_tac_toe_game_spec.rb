@@ -73,4 +73,17 @@ describe TicTacToe do
       allow(game).to receive(:puts).with(error_message).once
     end
   end
+
+  describe "play_round" do
+    before do
+      allow(game).to receive(:gets).and_return("1,1", "2,1")
+    end
+    it "changes rounds, turn, board, and updates move combinations" do
+      2.times { game.send(:play_round) }
+      expect(game).to have_attributes(player_turn: "o", rounds_played: 2)
+      expect(game.board[0][0]).to eq("x")
+      expect(game.board[2][0]).to eq("o")
+      expect(game.move_combinations).to include("x").and include("o")
+    end
+  end
 end
