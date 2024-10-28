@@ -177,7 +177,7 @@ class TicTacToe
     @current_move = " "
     @rounds_played = 0
     @player_turn = " "
-    @move_combinations = ""
+    @move_combinations = " "
   end
 
   def play_game
