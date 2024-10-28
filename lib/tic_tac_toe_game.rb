@@ -17,11 +17,13 @@ class TicTacToe
     @player_turn = " "
     @move_combinations = ""
   end
+  attr_reader :board, :current_move, :player_turn, :simple_board, :player_one_win,
+              :player_two_win, :move_combinations, :game_over, :rounds_played
 
   private
 
-  attr_accessor :board, :current_move, :player_turn, :simple_board, :player_one_win,
-                :player_two_win, :move_combinations, :game_over, :rounds_played
+  attr_writer :board, :current_move, :player_turn, :simple_board, :player_one_win,
+              :player_two_win, :move_combinations, :game_over, :rounds_played
 
   def fill_board
     BOARD_SPACES.each do |i|
