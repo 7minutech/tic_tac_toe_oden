@@ -59,4 +59,17 @@ describe TicTacToe do
       expect(game.rounds_played).to eq(0)
     end
   end
+
+  describe "valid_player_move" do
+    before do
+      invalid_input = "f"
+      valid_input = "2,2"
+      allow(game).to receive(:gets).and_return(invalid_input, valid_input)
+    end
+    it "stops once a valid move is given" do
+      error_message = "Row and Column must be between [1,3]"
+      game.send(:play_round)
+      allow(game).to receive(:puts).with(error_message).once
+    end
+  end
 end
