@@ -4,14 +4,9 @@
 # 4. Looping Script - Only calls other methods, usually without returning
 #    anything, and stops when certain conditions are met.
 
-looping script test condition
-it valid_player_move
-it play_game
-
-command and query inside public script methods
-should tested and made public
-it play_game  
-      #game_over?
-      play_again?
-      reset
-
+#game_over? decides when game ends
+#play_game public looping script method must check exit condition
+#reset necessary to play play play again 
+#valid_player_move looping script must check exit condition
+#play_round must test to see if state is changed correctly
+other methods will be tested implicitly by testing these methods
